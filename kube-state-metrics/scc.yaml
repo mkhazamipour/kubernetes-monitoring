@@ -1,0 +1,34 @@
+allowHostPorts: false
+priority: null
+requiredDropCapabilities: null
+allowPrivilegedContainer: false
+runAsUser:
+  type: RunAsAny
+users:
+  - 'system:serviceaccount:monitoring:prometheus-kube-state-metrics'
+allowHostDirVolumePlugin: true
+allowHostIPC: false
+seLinuxContext:
+  type: RunAsAny
+readOnlyRootFilesystem: false
+metadata:
+  name: external-kube-state-metrics
+  annotations:
+    kubernetes.io/description: >-
+      kube-state-metrics scc is used for the kube-state-metrics component to be
+      able to mount `/etc/localtime` to have kube-state-metrics be able to have
+      the same timezone settings as the host.
+fsGroup:
+  type: RunAsAny
+groups: []
+kind: SecurityContextConstraints
+defaultAddCapabilities: null
+supplementalGroups:
+  type: RunAsAny
+volumes:
+  - '*'
+allowHostPID: false
+allowHostNetwork: false
+allowPrivilegeEscalation: true
+apiVersion: v1
+allowedCapabilities: null
