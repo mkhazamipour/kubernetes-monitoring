@@ -1,0 +1,31 @@
+allowHostPorts: true
+priority: null
+requiredDropCapabilities: null
+allowPrivilegedContainer: false
+runAsUser:
+  type: RunAsAny
+users:
+  - 'system:serviceaccount:monitoring:prometheus-node-exporter'
+allowHostDirVolumePlugin: true
+allowHostIPC: false
+seLinuxContext:
+  type: RunAsAny
+readOnlyRootFilesystem: false
+metadata:
+  name: external-node-exporter
+  annotations:
+    kubernetes.io/description: node-exporter scc is used for the Prometheus node exporter
+fsGroup:
+  type: RunAsAny
+groups: []
+kind: SecurityContextConstraints
+defaultAddCapabilities: null
+supplementalGroups:
+  type: RunAsAny
+volumes:
+  - '*'
+allowHostPID: true
+allowHostNetwork: true
+allowPrivilegeEscalation: true
+apiVersion: v1
+allowedCapabilities: null
