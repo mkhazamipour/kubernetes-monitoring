@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: monitoring
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: 800m
+    kubernetes.io/tls-acme: 'true'
+spec:
+  backend:
+    serviceName: grafana
+    servicePort: 80
+  rules:
+  - host: grafana.cluster.mort.pro
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: 80
