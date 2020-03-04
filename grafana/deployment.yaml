@@ -66,7 +66,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /etc/grafana/grafana.ini
-          name: config
+          name: grafana
           subPath: grafana.ini
         - name: grafanadisk
           mountPath: /var/lib/grafana
@@ -78,8 +78,9 @@ spec:
       terminationGracePeriodSeconds: 30
       volumes:
       - name: grafanadisk
-          persistentVolumeClaim:
-            claimName: grafanadisk
-      - configMap:
-          defaultMode: 420
+        persistentVolumeClaim:
+          claimName: grafanadisk
+      - name: grafana
+        configMap:
           name: grafana
+          defaultMode: 420
