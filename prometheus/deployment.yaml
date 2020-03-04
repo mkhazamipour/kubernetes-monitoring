@@ -77,11 +77,6 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext:
-        fsGroup: 65534
-        runAsGroup: 65534
-        runAsNonRoot: true
-        runAsUser: 65534
       serviceAccount: prometheus-server
       serviceAccountName: prometheus-server
       terminationGracePeriodSeconds: 300
@@ -91,5 +86,5 @@ spec:
           name: prometheus-server
         name: config-volume
       - name: prometheusdisk
-          persistentVolumeClaim:
-            claimName: prometheusdisk
+        persistentVolumeClaim:
+          claimName: prometheusdisk
