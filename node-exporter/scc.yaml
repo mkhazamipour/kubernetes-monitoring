@@ -5,7 +5,7 @@ allowPrivilegedContainer: false
 runAsUser:
   type: RunAsAny
 users:
-  - 'system:serviceaccount:monitoring:prometheus-node-exporter'
+  - 'system:serviceaccount:monitoring:node-exporter'
 allowHostDirVolumePlugin: true
 allowHostIPC: false
 seLinuxContext:

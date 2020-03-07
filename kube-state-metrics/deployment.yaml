@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   annotations:
   labels:
-    app: prometheus
-  name: prometheus-kube-state-metrics
+    app: kube-state-metrics
+  name: kube-state-metrics
   namespace: monitoring
 spec:
   progressDeadlineSeconds: 600
@@ -12,7 +12,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: prometheus
+      app: kube-state-metrics
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -21,12 +21,12 @@ spec:
   template:
     metadata:
       labels:
-        app: prometheus
+        app: kube-state-metrics
     spec:
       containers:
       - image: quay.io/coreos/kube-state-metrics:v1.9.1
         imagePullPolicy: IfNotPresent
-        name: prometheus-kube-state-metrics
+        name: kube-state-metrics
         ports:
         - containerPort: 8080
           name: metrics
@@ -43,6 +43,6 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
-      serviceAccount: prometheus-kube-state-metrics
-      serviceAccountName: prometheus-kube-state-metrics
+      serviceAccount: kube-state-metrics
+      serviceAccountName: kube-state-metrics
       terminationGracePeriodSeconds: 30

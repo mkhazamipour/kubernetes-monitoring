@@ -3,7 +3,7 @@ kind: ClusterRole
 metadata:
   labels:
     app: prometheus
-  name: prometheus-server
+  name: prometheus
 rules:
 - apiGroups:
   - ""
