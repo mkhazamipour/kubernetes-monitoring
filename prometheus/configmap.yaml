@@ -207,6 +207,8 @@ data:
     - job_name: kubernetes-service-endpoints
       kubernetes_sd_configs:
       - role: endpoints
+      tls_config:
+        insecure_skip_verify: true
       relabel_configs:
       - action: keep
         regex: true
