@@ -63,7 +63,7 @@ data:
         replacement: ${1}
       - target_label: endpoint
         replacement: metrics
-    - job_name: kube-apiserver-openshift
+    - job_name: kube-apiserver
       honor_labels: false
       kubernetes_sd_configs:
       - role: endpoints
@@ -110,7 +110,7 @@ data:
         replacement: ${1}
       - target_label: endpoint
         replacement: https
-    - job_name: kube-controllers-openshift
+    - job_name: kube-controllers
       honor_labels: false
       kubernetes_sd_configs:
       - role: endpoints
@@ -207,6 +207,8 @@ data:
     - job_name: kubernetes-service-endpoints
       kubernetes_sd_configs:
       - role: endpoints
+      tls_config:
+        insecure_skip_verify: true
       relabel_configs:
       - action: keep
         regex: true
