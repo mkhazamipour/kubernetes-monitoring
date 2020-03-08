@@ -3,17 +3,17 @@ kind: DaemonSet
 metadata:
   annotations:
   labels:
-    app: prometheus
-  name: prometheus-node-exporter
+    app: node-exporter
+  name: node-exporter
   namespace: monitoring
 spec:
   selector:
     matchLabels:
-      app: prometheus
+      app: node-exporter
   template:
     metadata:
       labels:
-        app: prometheus
+        app: node-exporter
     spec:
       containers:
       - args:
@@ -21,7 +21,7 @@ spec:
         - --path.sysfs=/host/sys
         image: prom/node-exporter:v0.18.1
         imagePullPolicy: IfNotPresent
-        name: prometheus-node-exporter
+        name: node-exporter
         ports:
         - containerPort: 9100
           name: metrics
@@ -40,8 +40,8 @@ spec:
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
-      serviceAccount: prometheus-node-exporter
-      serviceAccountName: prometheus-node-exporter
+      serviceAccount: node-exporter
+      serviceAccountName: node-exporter
       terminationGracePeriodSeconds: 30
       volumes:
       - hostPath:

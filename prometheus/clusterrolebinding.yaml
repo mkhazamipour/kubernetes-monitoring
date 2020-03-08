@@ -3,12 +3,12 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     app: prometheus
-  name: prometheus-server
+  name: prometheus
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: prometheus-server
+  name: prometheus
 subjects:
 - kind: ServiceAccount
-  name: prometheus-server
+  name: prometheus
   namespace: monitoring

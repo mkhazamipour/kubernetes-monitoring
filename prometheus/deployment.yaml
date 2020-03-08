@@ -52,7 +52,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 30
-        name: prometheus-server
+        name: prometheus
         ports:
         - containerPort: 9090
           protocol: TCP
@@ -82,13 +82,13 @@ spec:
         runAsGroup: 65534
         runAsNonRoot: true
         runAsUser: 65534
-      serviceAccount: prometheus-server
-      serviceAccountName: prometheus-server
+      serviceAccount: prometheus
+      serviceAccountName: prometheus
       terminationGracePeriodSeconds: 300
       volumes:
       - configMap:
           defaultMode: 420
-          name: prometheus-server
+          name: prometheus
         name: config-volume
       - name: prometheusdisk
           persistentVolumeClaim:

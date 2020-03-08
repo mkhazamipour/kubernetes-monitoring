@@ -4,8 +4,8 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
   labels:
-    app: prometheus
-  name: prometheus-kube-state-metrics
+    app: kube-state-metrics
+  name: kube-state-metrics
   namespace: monitoring
 spec:
   ports:
@@ -18,6 +18,6 @@ spec:
     protocol: TCP
     targetPort: 8081
   selector:
-    app: prometheus
+    app: kube-state-metrics
   sessionAffinity: None
   type: ClusterIP
