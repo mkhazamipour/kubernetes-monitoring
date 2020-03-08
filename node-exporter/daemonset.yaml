@@ -15,6 +15,9 @@ spec:
       labels:
         app: node-exporter
     spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
       containers:
       - args:
         - --path.procfs=/host/proc
