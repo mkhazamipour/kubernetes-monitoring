@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alertmanager-ingress
+  namespace: monitoring
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: 800m
+    kubernetes.io/tls-acme: 'true'
+spec:
+  backend:
+    serviceName: alertmanager
+    servicePort: 80
+  rules:
+  - host: alertmanager.cluster.mort.pro
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: alertmanager
+          servicePort: 80
